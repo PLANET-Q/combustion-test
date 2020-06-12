@@ -1,0 +1,25 @@
+①outputフォルダとinputフォルダの中に測定日のフォルダを作る。
+　測定日のフォルダの中に校正するファイルを入れる。
+
+⑥calibration_pressure.pyのプログラムを開いて最初に設定するものを変更する。
+　設定値.txtを参考にしてほしい。
+　変更したプログラムを保存する。
+
+⑧Anaconda Promptを開く。
+　プログラムのあるフォルダに移動する。
+　例）cd C:\Users\Owner\Documents\解析\python\解析
+
+⑨python analysis_burningexperiment.py　で実行する。
+
+⑩freqs_power_thrust.txt　カットオフ周波数を調べるときに使う。
+　fft_thrust.txt　　　　　　ノイズ除去した推力を確認するときに使う。
+　tangent_line.txt　　　　　推力グラフの傾きとy切片を確認するときに使う。
+　燃焼試験解析.html　　　　解析結果　基本的にはこれだけでいい。
+
+
+燃焼試験解析.htmlの使い方
+Pan　グラフを動かす
+Box Zoom　グラフの拡大
+Wheel Zoom　ホイールで拡大
+Save　移動したり拡大したグラフを保存できる
+Reset　最初のグラフに戻す

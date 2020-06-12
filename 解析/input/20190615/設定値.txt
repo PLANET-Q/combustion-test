@@ -1,0 +1,17 @@
+filename_edx = "EDX100A_data0170.dat"
+filename_pqmain = "PQ_measure_main_10.dat"
+
+experiment_date = "20190615"
+enginename = "TEK-J"
+
+温度場所不明
+temperature1_name = "1"
+temperature2_name = "2"
+temperature3_name = "3"
+tempereture4_name = "4"
+
+燃焼室圧なし
+inclination_calibration_coefficient_tank = 0.000768
+intercept_calibration_coefficient_tank = -2.568
+
+cutoff_frequency = 0.0000002

@@ -1,0 +1,30 @@
+①outputフォルダとinputフォルダの中に測定日のフォルダを作る。
+　測定日のフォルダの中に校正するファイルを入れる。
+
+④gnuplotでPQ_measure_mainを表示する
+　データを取った列を確認する。
+　今後はしなくていいように測定する。
+　最初に圧力が下がるときのデータ(最大まで圧力をかけてなだらかに下がっている
+　ところまでは入れてもよい）以降を除く。
+　PQ_measure_mainのデータだけでよい。
+　EDXのデータは自動でPQ_measure_mainに合わせる。
+　今後はしなくていいように測定する。
+
+⑥calibration_pressure.pyのプログラムを開いて最初に設定するものを変更する。
+　設定値.txtを参考にしてほしい。
+　pqmain_row(列)の数え方がgnuplotとこのプログラムで異なっているので注意する。
+　変更したプログラムを保存する。
+
+⑧Anaconda Promptを開く。
+　プログラムのあるフォルダに移動する。
+　例）cd C:\Users\Owner\Documents\解析\python\校正
+
+⑨python calibration_pressure.py　で実行する。
+
+⑩自動で確認X.htmlが開くので1：1の関係になっていることを確認する。
+
+⑪校正係数はcoefficientX.txtに書いている。
+   pres_ex.txtは　1列目　　　　　2列目　　　　　　　　　　　　3列目
+　　　　　　　　　EDXの時間　　校正した自作測定器の圧力　　　EDXの圧力
+　である。
+　⑩でうまくいっていなかったときに原因究明に使う。

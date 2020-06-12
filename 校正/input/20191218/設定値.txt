@@ -1,0 +1,21 @@
+1
+filename_pqmain = "PQ_measure_main_16.dat"
+filename_edx = "EDX100A_data0177.dat"
+
+calibration_date = "20191218"
+
+instrument = "1"
+
+pqmain_row = 2
+
+
+
+2
+filename_pqmain = "PQ_measure_main_31.dat"
+filename_edx = "EDX100A_data0179.dat"
+
+calibration_date = "20191218"
+
+instrument = "2"
+
+pqmain_row = 2

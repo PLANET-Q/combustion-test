@@ -1,0 +1,17 @@
+filename_edx = "EDX100A_data0183.dat"
+filename_pqmain = "PQ_measure_main_41.dat"
+
+experiment_date = "20200117"
+enginename = "ntK360_OC500"
+
+temperature1_name = "tank"
+temperature2_name = "上部燃焼室"
+temperature3_name = "X"
+tempereture4_name = "下部燃焼室"
+
+タンク校正係数傾き　　0.000654202
+　　　　　　　y切片　-1.733407　　
+
+燃焼室圧は測定器の故障で測定できてない
+
+カットオフ周波数　0.0000002

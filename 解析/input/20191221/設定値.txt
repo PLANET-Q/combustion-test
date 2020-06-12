@@ -1,0 +1,19 @@
+filename_edx = "EDX100A_data0178.dat"
+filename_pqmain = "PQ_measure_main_29.dat"
+
+experiment_date = "20191221"
+enginename = "ntK360_OC500"
+
+temperature1_name = "tank"
+temperature2_name = "上部燃焼室"
+temperature3_name = "強め輪"
+tempereture4_name = "下部燃焼室"
+
+#校正係数傾き
+inclination_calibration_coefficient_tank = 0.00065762
+inclination_calibration_coefficient_firing = 0.00065385
+#校正係数y切片
+intercept_calibration_coefficient_tank = -1.66575
+intercept_calibration_coefficient_firing = -1.678805
+
+cutoff_frequency = 0.0000002
