@@ -36,7 +36,7 @@ inclination_calibration_coefficient_firing = 0.000654202
 intercept_calibration_coefficient_tank = -1.733407
 intercept_calibration_coefficient_firing = -1.733407
 
-# ノイズを除去したグラフが変だったら、filename_freqs_power_thrustのグラフを確認して、カットオフ周波数を変えてみると直る
+# 滑らかにしたグラフが変だったら、filename_freqs_power_thrustのグラフを確認して、カットオフ周波数を変えてみると直る
 # 0.0000002で大体のデータはOKっぽい
 cutoff_frequency = 0.0000002
 
@@ -57,7 +57,7 @@ edxtime = edxdata[:, 0]
 # -------------------------------------------------------------------------------------------------------------------------------------------
 
 
-# ノイズ除去---------------------------------------------------------------------------------------------------------------------------------
+# グラフの平滑化---------------------------------------------------------------------------------------------------------------------------------
 # カットオフ周波数を求める
 # 今はカットオフ周波数のグラフから自動でカットオフ周波数を求める方法がわからない
 # 0.0000002で大体のデータはOKっぽい
@@ -97,7 +97,7 @@ thrust_beforemax_small10per = thrust_beforemax[thrust_beforemax < thrust_10per]
 action_first = len(thrust_beforemax_small10per)
 
 # 燃焼終了のindexの算出-----------------------------------------------------------------------------
-# ノイズ除去推力の読み込み
+# 平滑化した推力の読み込み
 fft_data = np.loadtxt(filename_fft_thrust)
 fft_data_action = fft_data[action_first:action_last, :]
 
@@ -176,7 +176,7 @@ def grid(p_name):
     p_name.xgrid.minor_grid_line_color = 'lightgray'
     p_name.xgrid.minor_grid_line_color = 'lightgray'
     p_name.xgrid.minor_grid_line_alpha = 0.5
-    
+
 
 # 推力----------------------------------------------------------------------------------------------
 TOOLTIPS_thrust = [("(time[s], Thrust[N])", "($x, $y)"), ]
