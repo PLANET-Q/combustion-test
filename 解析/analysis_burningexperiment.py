@@ -153,6 +153,7 @@ temperature4 = pqmaindata[:, 6]
 firingpressure_data_offset_select = firingpressure_not0[100:200]
 firingpressure_offset_ave = np.mean(firingpressure_data_offset_select)
 firingpressure = firingpressure_not0 - firingpressure_offset_ave
+
 #tankpressure
 tankpressure_data_offset_select = tankpressure_not0[100:200]
 tankpressure_offset_ave = np.mean(tankpressure_data_offset_select)
@@ -167,7 +168,16 @@ filename_result = 'output/' + experiment_date + '/' + enginename + '_燃焼試�
 output_file(filename_result)
 C = d3["Category10"][10]
 
-# グリッドを統一して整理したほうがいい
+# グリッドを統一して整理
+def grid(p_name):
+    p_name.ygrid.minor_grid_line_color = 'lightgray'
+    p_name.ygrid.minor_grid_line_alpha = 0.5  # 透明度
+    p_name.ygrid.minor_grid_line_dash = 'dotted'
+    p_name.xgrid.minor_grid_line_color = 'lightgray'
+    p_name.xgrid.minor_grid_line_color = 'lightgray'
+    p_name.xgrid.minor_grid_line_alpha = 0.5
+    
+
 # 推力----------------------------------------------------------------------------------------------
 TOOLTIPS_thrust = [("(time[s], Thrust[N])", "($x, $y)"), ]
 p_thrust = figure(title = "thrust", 
@@ -205,12 +215,7 @@ label_burningtime=Label(x=0, y=300, text="burning time = " + str(burningtime) + 
 p_thrust.add_layout(label_burningtime)
 
 # グリッド
-p_thrust.ygrid.minor_grid_line_color = 'lightgray'
-p_thrust.ygrid.minor_grid_line_alpha = 0.5  # 透明度
-p_thrust.ygrid.minor_grid_line_dash = 'dotted'
-p_thrust.xgrid.minor_grid_line_color = 'lightgray'
-p_thrust.xgrid.minor_grid_line_color = 'lightgray'
-p_thrust.xgrid.minor_grid_line_alpha = 0.5
+grid(p_thrust)
 
 
 # タンク圧------------------------------------------------------------------------------------------
@@ -226,12 +231,7 @@ p_tank.line(pqmaintime_sec, tankpressure, line_color = C[0],
             line_width = 0.5, legend = "Tank Pressure")
 
 # グリッド
-p_tank.ygrid.minor_grid_line_color = 'lightgray'
-p_tank.ygrid.minor_grid_line_alpha = 0.5
-p_tank.ygrid.minor_grid_line_dash = 'dotted'
-p_tank.xgrid.minor_grid_line_color = 'lightgray'
-p_tank.xgrid.minor_grid_line_dash = 'dotted'
-p_tank.xgrid.minor_grid_line_alpha = 0.5
+grid(p_tank)
 
 
 # 燃焼室圧------------------------------------------------------------------------------------------
@@ -246,12 +246,8 @@ p_firing = figure(title = "Firing Pressure",
 p_firing.line(pqmaintime_sec, firingpressure, line_color = C[1], 
               line_width = 0.5, legend = "Firing Pressure")
 # グリッド
-p_firing.ygrid.minor_grid_line_color = 'lightgray'
-p_firing.ygrid.minor_grid_line_alpha = 0.5
-p_firing.ygrid.minor_grid_line_dash = 'dotted'
-p_firing.xgrid.minor_grid_line_color = 'lightgray'
-p_firing.xgrid.minor_grid_line_dash = 'dotted'
-p_firing.xgrid.minor_grid_line_alpha = 0.5
+grid(p_firing)
+
 
 TOOLTIPS_temperature = [("(time[s], Tank Temperature[℃])", "($x, $y)"), ]
 
@@ -267,12 +263,7 @@ p_temperature1 = figure(title = temperature1_name,
 p_temperature1.line(pqmaintime_sec, temperature1, line_color = C[2], 
                     line_width = 0.5, legend = temperature1_name)
 # グリッド
-p_temperature1.ygrid.minor_grid_line_color = 'lightgray'
-p_temperature1.ygrid.minor_grid_line_alpha = 0.5
-p_temperature1.ygrid.minor_grid_line_dash = 'dotted'
-p_temperature1.xgrid.minor_grid_line_color = 'lightgray'
-p_temperature1.xgrid.minor_grid_line_dash = 'dotted'
-p_temperature1.xgrid.minor_grid_line_alpha = 0.5
+grid(p_temperature1)
 
 
 # 温度2---------------------------------------------------------------------------------------------
@@ -286,12 +277,7 @@ p_temperature2 = figure(title = temperature2_name,
 p_temperature2.line(pqmaintime_sec, temperature2, line_color = C[3], 
                     line_width = 0.5, legend = temperature2_name)
 # グリッド
-p_temperature2.ygrid.minor_grid_line_color = 'lightgray'
-p_temperature2.ygrid.minor_grid_line_alpha = 0.5
-p_temperature2.ygrid.minor_grid_line_dash = 'dotted'
-p_temperature2.xgrid.minor_grid_line_color = 'lightgray'
-p_temperature2.xgrid.minor_grid_line_dash = 'dotted'
-p_temperature2.xgrid.minor_grid_line_alpha = 0.5
+grid(p_temperature2)
 
 
 # 温度3---------------------------------------------------------------------------------------------
@@ -305,12 +291,7 @@ p_temperature3 = figure(title = temperature3_name,
 p_temperature3.line(pqmaintime_sec, temperature3, line_color = C[4], 
                     line_width = 0.5, legend = temperature3_name)
 # グリッド
-p_temperature3.ygrid.minor_grid_line_color = 'lightgray'
-p_temperature3.ygrid.minor_grid_line_alpha = 0.5
-p_temperature3.ygrid.minor_grid_line_dash = 'dotted'
-p_temperature3.xgrid.minor_grid_line_color = 'lightgray'
-p_temperature3.xgrid.minor_grid_line_dash = 'dotted'
-p_temperature3.xgrid.minor_grid_line_alpha = 0.5
+grid(p_temperature3)
 
 
 # 温度4---------------------------------------------------------------------------------------------
@@ -324,12 +305,8 @@ p_temperature4 = figure(title = tempereture4_name,
 p_temperature4.line(pqmaintime_sec, temperature4, line_color = C[5], 
                     line_width = 0.5, legend = tempereture4_name)
 # グリッド
-p_temperature4.ygrid.minor_grid_line_color = 'lightgray'
-p_temperature4.ygrid.minor_grid_line_alpha = 0.5
-p_temperature4.ygrid.minor_grid_line_dash = 'dotted'
-p_temperature4.xgrid.minor_grid_line_color = 'lightgray'
-p_temperature4.xgrid.minor_grid_line_dash = 'dotted'
-p_temperature4.xgrid.minor_grid_line_alpha = 0.5
+grid(p_temperature4)
+
 # --------------------------------------------------------------------------------------------------
 
 # 配置
