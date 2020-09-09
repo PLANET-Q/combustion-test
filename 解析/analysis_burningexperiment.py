@@ -158,6 +158,13 @@ firingpressure = firingpressure_not0 - firingpressure_offset_ave
 tankpressure_data_offset_select = tankpressure_not0[100:200]
 tankpressure_offset_ave = np.mean(tankpressure_data_offset_select)
 tankpressure = tankpressure_not0 - tankpressure_offset_ave
+
+#EDXと自作測定器の時間を推力が最大になる時間と燃焼室圧が最大になる時間でそろえる
+firingpressure_max_index = firingpressure.argmax()
+edxtime_thrust_max = edxtime[thrust_max_index]
+pqmaintime_sec_firingpressure_max = pqmaintime_sec[firingpressure_max_index]
+pq_edx_time_sec = pqmaintime_sec + (edxtime_thrust_max - pqmaintime_sec_firingpressure_max)
+
 # -------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -227,7 +234,7 @@ p_tank = figure(title = "Tank Pressure",
                 y_axis_label = "Tank Pressure[MPa]", 
                 x_range = p_thrust.x_range, 
                 tooltips = TOOLTIPS_tank)
-p_tank.line(pqmaintime_sec, tankpressure, line_color = C[0], 
+p_tank.line(pq_edx_time_sec, tankpressure, line_color = C[0], 
             line_width = 0.5, legend = "Tank Pressure")
 
 # グリッド
@@ -243,7 +250,7 @@ p_firing = figure(title = "Firing Pressure",
                   y_axis_label = "Firing Pressure[MPa]", 
                   x_range = p_thrust.x_range, 
                   tooltips = TOOLTIPS_firing)
-p_firing.line(pqmaintime_sec, firingpressure, line_color = C[1], 
+p_firing.line(pq_edx_time_sec, firingpressure, line_color = C[1], 
               line_width = 0.5, legend = "Firing Pressure")
 # グリッド
 grid(p_firing)
@@ -260,7 +267,7 @@ p_temperature1 = figure(title = temperature1_name,
                         y_axis_label = "Temperature[℃]", 
                         x_range = p_thrust.x_range, 
                         tooltips = TOOLTIPS_temperature)
-p_temperature1.line(pqmaintime_sec, temperature1, line_color = C[2], 
+p_temperature1.line(pq_edx_time_sec, temperature1, line_color = C[2], 
                     line_width = 0.5, legend = temperature1_name)
 # グリッド
 grid(p_temperature1)
@@ -274,7 +281,7 @@ p_temperature2 = figure(title = temperature2_name,
                         y_axis_label = "Temperature[℃]", 
                         x_range = p_thrust.x_range, 
                         tooltips = TOOLTIPS_temperature)
-p_temperature2.line(pqmaintime_sec, temperature2, line_color = C[3], 
+p_temperature2.line(pq_edx_time_sec, temperature2, line_color = C[3], 
                     line_width = 0.5, legend = temperature2_name)
 # グリッド
 grid(p_temperature2)
@@ -288,7 +295,7 @@ p_temperature3 = figure(title = temperature3_name,
                         y_axis_label = "Temperature[℃]", 
                         x_range = p_thrust.x_range, 
                         tooltips = TOOLTIPS_temperature)
-p_temperature3.line(pqmaintime_sec, temperature3, line_color = C[4], 
+p_temperature3.line(pq_edx_time_sec, temperature3, line_color = C[4], 
                     line_width = 0.5, legend = temperature3_name)
 # グリッド
 grid(p_temperature3)
@@ -302,7 +309,7 @@ p_temperature4 = figure(title = tempereture4_name,
                         y_axis_label = "Temperature[℃]", 
                         x_range = p_thrust.x_range, 
                         tooltips = TOOLTIPS_temperature)
-p_temperature4.line(pqmaintime_sec, temperature4, line_color = C[5], 
+p_temperature4.line(pq_edx_time_sec, temperature4, line_color = C[5], 
                     line_width = 0.5, legend = tempereture4_name)
 # グリッド
 grid(p_temperature4)
